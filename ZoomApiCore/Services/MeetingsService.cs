@@ -22,16 +22,41 @@ namespace ZoomApiCore.Services
 
 		public async Task<CreateMeetingResponse> CreateMeeting(string userId, CreateMeetingRequest request)
 		{
+			if (string.IsNullOrEmpty(userId))
+			{
+				throw new ArgumentException($"'{nameof(userId)}' cannot be null or empty.", nameof(userId));
+			}
+
+			if (request is null)
+			{
+				throw new ArgumentNullException(nameof(request));
+			}
+
 			return await httpService.PostAsync<CreateMeetingRequest, CreateMeetingResponse>($"users/{userId}/meetings", request);
 		}
 
 		public async Task<CreateMeetingResponse> CreateMeeting(CreateMeetingRequest request)
 		{
+			if (request is null)
+			{
+				throw new ArgumentNullException(nameof(request));
+			}
+
 			return await CreateMeeting("me", request);
 		}
 
 		public async Task<GetMeetingListResponse> GetMeetings(string userId, GetMeetingListRequest request)
 		{
+			if (string.IsNullOrEmpty(userId))
+			{
+				throw new ArgumentException($"'{nameof(userId)}' cannot be null or empty.", nameof(userId));
+			}
+
+			if (request is null)
+			{
+				throw new ArgumentNullException(nameof(request));
+			}
+
 			var query = new QueryBuilder();
 
 			query.Add("type", request.Type);
@@ -46,6 +71,11 @@ namespace ZoomApiCore.Services
 
 		public async Task<GetMeetingListResponse> GetMeetings(GetMeetingListRequest request)
 		{
+			if (request is null)
+			{
+				throw new ArgumentNullException(nameof(request));
+			}
+
 			return await GetMeetings("me", request);
 		}
 	}
