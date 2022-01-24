@@ -25,6 +25,6 @@ namespace ZoomApiCore.Responses
 		[JsonProperty("next_page_token")]
 		public string NextPageToken { get; set; }
 
-		public IEnumerable<ZoomMeeting> Meetings { get; set; }
+		public IEnumerable<Meeting> Meetings { get; set; }
 	}
 }

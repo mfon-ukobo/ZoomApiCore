@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Http.Extensions;
 
+using ZoomApiCore.Models;
 using ZoomApiCore.Requests;
 using ZoomApiCore.Responses;
 
@@ -77,6 +78,11 @@ namespace ZoomApiCore.Services
 			}
 
 			return await GetMeetings("me", request);
+		}
+
+		public async Task<MeetingDetail> GetMeeting(long meetingId)
+		{
+
 		}
 	}
 }

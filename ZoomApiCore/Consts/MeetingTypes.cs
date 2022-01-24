@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ZoomApiCore.Consts
 {
-	public class ZoomMeetingTypes
+	public class MeetingTypes
 	{
 		public const int InstantMeeting = 1;
 		public const int ScheduledMeeting = 2;
